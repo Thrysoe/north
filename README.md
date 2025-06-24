@@ -1,2 +1,2 @@
 # NORTH
-COMSOL simulations of the NORTH tokamak
+Simulation and diagnostics tools for the NORTH tokamak.
