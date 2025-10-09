@@ -1,2 +1,2 @@
-# NORTH
-Simulation and diagnostics tools for the NORTH tokamak.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
+https://colab.research.google.com/github/thrysoe/north/blob/main/north.ipynb)
