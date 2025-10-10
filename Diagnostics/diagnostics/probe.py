@@ -43,20 +43,20 @@ class Probe(Diagnostic):
 
     def _load_position_cache(self):
         if self.shot not in Probe._position_cache:
-            print(f"🔄 Loading position data for Shot #{self.shot}")
+            # print(f"🔄 Loading position data for Shot #{self.shot}")
             with open(self.position_path, 'r') as file:
                 Probe._position_cache[self.shot] = json.load(file)["probes"]
 
     def _load_mapping_cache(self):
         if self.shot not in Probe._mapping_cache:
-            print(f"🔄 Loading mapping data for Shot #{self.shot}")
+            # print(f"🔄 Loading mapping data for Shot #{self.shot}")
             with open(self.mapping_path, 'r') as file:
                 Probe._mapping_cache[self.shot] = json.load(file)
 
     def _load_data_cache(self):
         """ Load all active probe channels into cache if caching is enabled. """
         if self.shot not in Probe._data_cache:
-            print(f"🔄 Bulk loading probe data for Shot #{self.shot}")
+            # print(f"🔄 Bulk loading probe data for Shot #{self.shot}")
             channels = []
             mapping = Probe._mapping_cache[self.shot]
             for probe_id, channel in mapping.items():
@@ -84,7 +84,7 @@ class Probe(Diagnostic):
             if self.caching:
                 probe_info = Probe._position_cache[self.shot].get(str(self.number))
             else:
-                print(f"🔄 Loading configuration for Shot #{self.shot} : Probe {self.number}")
+                # print(f"🔄 Loading configuration for Shot #{self.shot} : Probe {self.number}")
                 with open(self.position_path, 'r') as file:
                     positions = json.load(file)["probes"]
                 probe_info = positions.get(str(self.number))
@@ -134,7 +134,7 @@ class Probe(Diagnostic):
     def _load_data(self):
         if self.active and not self._data_loaded:
             if self.caching:
-                print(f"🔄 Accessing cached data for Shot #{self.shot} : Probe {self.number}")
+                # print(f"🔄 Accessing cached data for Shot #{self.shot} : Probe {self.number}")
                 time, bias_voltage, current_dict = Probe._data_cache[self.shot]
                 ch = int(self.channel) if self.channel is not None else None
                 self._time = time
